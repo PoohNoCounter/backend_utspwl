@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package product;
+
+message Product {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    int32 stock = 5;
+    string image = 6;
+}
+
+message ProductListRequest {
+}
+
+message ProductListResponse {
+    repeated Product products = 1;
+}
+
+message ProductDetailRequest {
+    int32 id = 1;
+}
+
+message ProductDetailResponse {
+    Product product = 1;
+}
+
+message ProductCreateRequest {
+    string name = 1;
+    string description = 2;
+    float price = 3;
+    int32 stock = 4;
+    string image = 5;
+}
+
+message ProductCreateResponse {
+    Product product = 1;
+}
+
+message ProductUpdateRequest {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    int32 stock = 5;
+    string image = 6;
+}
+
+message ProductUpdateResponse {
+    Product product = 1;
+}
+
+message ProductDeleteRequest {
+    int32 id = 1;
+}
+
+message ProductDeleteResponse {
+    
+}
+
+message SumPriceRequest {
+    repeated int32 ids = 1;
+}
+
+message SumPriceResponse {
+    float price = 1;
+}
+
+service ProductService {
+    rpc ProductList(ProductListRequest) returns (ProductListResponse);
+    rpc ProductDetail(ProductDetailRequest) returns (ProductDetailResponse);
+    rpc ProductCreate(ProductCreateRequest) returns (ProductCreateResponse);
+    rpc ProductUpdate(ProductUpdateRequest) returns (ProductUpdateResponse);
+    rpc ProductDelete(ProductDeleteRequest) returns (ProductDeleteResponse);
+    rpc SumPrice(SumPriceRequest) returns (SumPriceResponse);
+}
+
+
